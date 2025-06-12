@@ -10,6 +10,10 @@ export function TodoList() {
     setTarea(""); // Limpia el campo de entrada
   };
 
+  const eliminarTarea = (indexAEliminar) => {
+    setTareas(tareas.filter((_, index) => index !== indexAEliminar));
+  };
+
   console.log("tarea:", tarea);
 
   return (
@@ -26,7 +30,10 @@ export function TodoList() {
       </button>
       <ul>
         {tareas.map((tarea, index) => (
-          <li key={index}>{tarea}</li>
+          <li key={index}>
+            {tarea}
+            <button onClick={() => eliminarTarea(index)} style={{marginLeft: '10px'}}>Eliminar</button>
+          </li>
         ))}
       </ul>
     </div>
